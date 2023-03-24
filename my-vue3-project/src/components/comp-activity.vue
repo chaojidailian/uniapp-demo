@@ -17,13 +17,13 @@ const activityImgUrl = computed(() => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .comp-activity {
   display: flex;
   justify-content: center;
   padding: 5px;
-  width: 100vw;
-  background: palegoldenrod;
+  min-width: 100vw;
+  background: $uni-color-primary;
 }
 .activity-img {
   height: 120rpx;

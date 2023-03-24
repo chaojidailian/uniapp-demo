@@ -90,10 +90,10 @@ const gotoPages = (banner: any) => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .comp-swiper {
-  width: 100vw;
-  background: pink;
+  min-width: 100vw;
+  background: $uni-color-success;
 }
 .swiper-item {
   display: flex;
