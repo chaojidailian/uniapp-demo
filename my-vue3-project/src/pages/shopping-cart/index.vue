@@ -1,6 +1,6 @@
 <template>
-  <view class="index">
-    购物车
+  <view class="shopping-cart">
+    <comp-cart-goods-item></comp-cart-goods-item>
   </view>
 </template>
 
@@ -10,4 +10,3 @@
 <style lang="scss" scoped>
   
 </style>
-
