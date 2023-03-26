@@ -1,0 +1,7 @@
+{
+  "name": "banners-get",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

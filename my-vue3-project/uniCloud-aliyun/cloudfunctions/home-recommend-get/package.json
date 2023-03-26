@@ -1,0 +1,7 @@
+{
+  "name": "home-recommend-get",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

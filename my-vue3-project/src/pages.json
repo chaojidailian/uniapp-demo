@@ -26,6 +26,12 @@
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
+		},
+		{
+			"path": "pages/demo/index",
+			"style": {
+				"navigationBarTitleText": "测试"
+			}
 		}
 	],
 	"globalStyle": {
@@ -70,6 +76,12 @@
 				"iconPath": "static/image/tabBar-personal.png",
 				"selectedIconPath": "static/image/tabBar-personal-s.png",
 				"text": "个人"
+			},
+			{
+				"pagePath": "pages/demo/index",
+				"iconPath": "static/image/tabBar-category.png",
+				"selectedIconPath": "static/image/tabBar-category-s.png",
+				"text": "测试"
 			}
 		]
 	}
