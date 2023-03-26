@@ -9,6 +9,7 @@
       :data="commendData"
       ref="commendRef"
     ></comp-home-recommend>
+    
   </view>
 </template>
 
