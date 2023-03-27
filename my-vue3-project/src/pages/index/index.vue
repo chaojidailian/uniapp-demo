@@ -9,7 +9,6 @@
       :data="commendData"
       ref="commendRef"
     ></comp-home-recommend>
-    
   </view>
 </template>
 
@@ -36,11 +35,4 @@ onPullDownRefresh(setPullDownRefresh())
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-}
 </style>

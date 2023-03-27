@@ -1,88 +1,197 @@
 {
-	"pages": [
-		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"enablePullDownRefresh": true,
-				"onReachBottomDistance": 100
-			}
-		},
-		{
-			"path": "pages/category/index",
-			"style": {
-				"navigationBarTitleText": "商品分类"
-			}
-		},
-		{
-			"path": "pages/shopping-cart/index",
-			"style": {
-				"navigationBarTitleText": "购物车"
-			}
-		},
-		{
-			"path": "pages/personal-center/index",
-			"style": {
-				"navigationBarTitleText": "个人中心"
-			}
-		},
-		{
-			"path": "pages/demo/index",
-			"style": {
-				"navigationBarTitleText": "测试"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "默认名称",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			// uni-ui 规则如下配置
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-		}
-	},
-	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#3cc51f",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"iconPath": "static/image/tabBar-home.png",
-				"selectedIconPath": "static/image/tabBar-home-s.png",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/category/index",
-				"iconPath": "static/image/tabBar-category.png",
-				"selectedIconPath": "static/image/tabBar-category-s.png",
-				"text": "分类"
-			},
-			{
-				"pagePath": "pages/shopping-cart/index",
-				"iconPath": "static/image/tabBar-cart.png",
-				"selectedIconPath": "static/image/tabBar-cart-s.png",
-				"text": "购物车"
-			},
-			{
-				"pagePath": "pages/personal-center/index",
-				"iconPath": "static/image/tabBar-personal.png",
-				"selectedIconPath": "static/image/tabBar-personal-s.png",
-				"text": "个人"
-			},
-			{
-				"pagePath": "pages/demo/index",
-				"iconPath": "static/image/tabBar-category.png",
-				"selectedIconPath": "static/image/tabBar-category-s.png",
-				"text": "测试"
-			}
-		]
-	}
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 100
+      }
+    },
+    {
+      "path": "pages/category/index",
+      "style": {
+        "navigationBarTitleText": "商品分类"
+      }
+    },
+    {
+      "path": "pages/shopping-cart/index",
+      "style": {
+        "navigationBarTitleText": "购物车"
+      }
+    },
+    {
+      "path": "pages/personal-center/index",
+      "style": {
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/world/index",
+      "style": {
+        "navigationBarTitleText": "世界"
+      }
+    },
+    {
+      "path": "pages/world/page-edit",
+      "style": {
+        "navigationBarTitleText": "编辑"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+      "style": {
+        "navigationBarTitleText": "注销账号"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+      "style": {
+        "navigationBarTitleText": "个人资料"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+      "style": {
+        "navigationBarTitleText": "绑定手机号码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-smscode",
+      "style": {
+        "navigationBarTitleText": "手机验证码登录"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register",
+      "style": {
+        "navigationBarTitleText": "注册"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register-by-email",
+      "style": {
+        "navigationBarTitleText": "邮箱验证码注册"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+      "style": {
+        "navigationBarTitleText": "重置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+      "style": {
+        "navigationBarTitleText": "通过邮箱重置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/common/webview/webview",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "修改密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register-admin",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "注册管理员账号"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "设置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/realname-verify/realname-verify",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "实名认证"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "默认名称",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      // uni-ui 规则如下配置
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      //first-ui 规则
+      "fui-(.*)": "firstui-uni/firstui/fui-$1/fui-$1.vue"
+    }
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/image/tabBar-home.png",
+        "selectedIconPath": "static/image/tabBar-home-s.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "iconPath": "static/image/tabBar-category.png",
+        "selectedIconPath": "static/image/tabBar-category-s.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/shopping-cart/index",
+        "iconPath": "static/image/tabBar-cart.png",
+        "selectedIconPath": "static/image/tabBar-cart-s.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/personal-center/index",
+        "iconPath": "static/image/tabBar-personal.png",
+        "selectedIconPath": "static/image/tabBar-personal-s.png",
+        "text": "个人"
+      },
+      {
+        "pagePath": "pages/world/index",
+        "iconPath": "static/image/tabBar-category.png",
+        "selectedIconPath": "static/image/tabBar-category-s.png",
+        "text": "世界"
+      }
+    ]
+  }
 }

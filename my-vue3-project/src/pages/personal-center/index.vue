@@ -1,15 +1,17 @@
 <template>
   <view class="personal-center">
-    <view>
-      你好飞洒范德萨分撒范德萨范德萨范德萨阿凡，达阿斯弗啊啊你好飞洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊
-      你好飞洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊你好飞洒范，德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊
-      你好飞洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊你好飞洒，范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊
-      你好飞洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊你好飞，洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊
-      你好飞洒范德萨分撒范德萨范德萨范德萨阿凡达阿斯弗啊啊！！！
-    </view>
+    <button @click="handleProfileClick">个人信息</button>
+    <button @click="handleLoginClick">登录页</button>
   </view>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const handleLoginClick = () => {
+  uni.navigateTo({ url: '/uni_modules/uni-id-pages/pages/login/login-withpwd' })
+}
+const handleProfileClick = () => {
+  uni.navigateTo({url: '/uni_modules/uni-id-pages/pages/userinfo/userinfo'})
+}
+</script>
 
 <style lang="scss" scoped></style>
