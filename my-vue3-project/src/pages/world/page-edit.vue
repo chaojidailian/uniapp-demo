@@ -128,25 +128,28 @@ const handleClearClick = () => {
   editRef.value.clear()
 }
 // 工具函数：匹配所有的图片src，上传并做替换
-const fullContent = (text: string) => {
+const fullContent = async (text: string) => {
   const imgReg = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi
   let result: any
-  result = replaceImgUrl(text, imgReg)
+  result = await replaceImgUrl(text, imgReg)
   console.log('result', result)
   return ''
 }
 
-const replaceImgUrl = (text: string, reg: string | RegExp) => {
-  return text.replace(reg, async (match, p1) => {
-    const result = await uniCloud
+const replaceImgUrl = async (text: string, reg: string | RegExp) => {
+  return text.replace(reg, (match, p1) => {
+    uniCloud
       .uploadFile({
         filePath: p1.trim(),
         cloudPath: `文章图片-${Date.now()}${getFileExt(p1)}`,
+      }).then(res => {
+        console.log(res)
+        return res
+      }).catch(err => {
+        console.log(err)
+        return ''
       })
-      .then((res) => {
-        return res.fileID
-      })
-    return result
+    return ''
   })
 }
 
