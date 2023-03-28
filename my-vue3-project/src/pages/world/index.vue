@@ -27,6 +27,7 @@
         </view>
       </view>
       <view class="article-content">
+        <h2>默认标题</h2>
         <text
           >这是一段文本文本呢北往南本文岗位反对撒飞洒发顺丰幅度萨芬撒地方
           给商店啊的说法都是发商店发商店发生发发士大夫精神的发生发第三方
@@ -157,12 +158,12 @@ const handleEditClick = () => {
 
 <style lang="scss" scoped>
 .world-index {
-  background: #ccc;
+  background: #eee;
   position: relative;
   .article {
     background: #fff;
     border-radius: $uni-border-radius-base;
-    box-shadow: 2px 2px 5px #999;
+    box-shadow: 2px 2px 5px #ccc;
     padding: 36rpx;
     margin: 8rpx;
     margin-bottom: 18rpx;
@@ -188,14 +189,19 @@ const handleEditClick = () => {
       }
     }
     .article-content {
-      display: -webkit-box;
-      overflow: hidden;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      font-size: 36rpx;
       margin: {
         top: 12rpx;
         bottom: 24rpx;
+      }
+      h2 {
+        font-size: 54rpx;
+      }
+      text {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: 36rpx;
       }
     }
     .article-imgs {
@@ -215,7 +221,6 @@ const handleEditClick = () => {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      background: #ccc;
     }
   }
   .article-edit {

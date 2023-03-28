@@ -28,6 +28,12 @@
       }
     },
     {
+      "path": "pages/personal-center/demo",
+      "style": {
+        "navigationBarTitleText": "手动上传文件"
+      }
+    },
+    {
       "path": "pages/world/index",
       "style": {
         "navigationBarTitleText": "世界"

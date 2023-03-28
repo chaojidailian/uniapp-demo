@@ -11,6 +11,7 @@ onHide(() => {
 })
 </script>
 <style lang="scss">
+@import "@/static/font/iconfont.css";
 view {
   box-sizing: border-box;
 }
