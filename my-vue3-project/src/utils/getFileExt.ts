@@ -3,3 +3,5 @@ export default function getFileExt(fileName: string) {
     ? fileName.slice(fileName.lastIndexOf('.'))
     : ''
 }
+
+//const imgSrcReg = /(?<=(img[^>]*src="))[^"]*/g

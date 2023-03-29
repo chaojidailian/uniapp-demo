@@ -1,6 +1,9 @@
 <template>
   <view class="page-edit">
-    <fui-button class="submitBtn" @click="handleAddArticleClick"
+    <fui-button
+      class="submitBtn"
+      :disabled="!formData.title"
+      @click="handleAddArticleClick"
       >发表文章</fui-button
     >
     <view>
@@ -68,16 +71,18 @@
 import mpHtml from 'mp-html/dist/uni-app/components/mp-html/mp-html'
 import { defineComponent, reactive, ref, onMounted } from 'vue'
 import getFileExt from '@/utils/getFileExt'
+import getipToAddress from '@/utils/getipToAddress'
 defineComponent({
   mpHtml,
 })
 const formData = reactive({
   title: '',
+  //文本框初始值
   html: '',
 })
 const db = uniCloud.database()
-// 上传文章后的操作
-const handleAddArticleClick = () => {
+// 上传文章的操作
+const handleAddArticleClick = async () => {
   // db.collection('articles')
   //   .add({
   //     title: '测试文章4',
@@ -86,9 +91,23 @@ const handleAddArticleClick = () => {
   //   .then((res) => {
   //     console.log(res)
   //   })
-
   const content = editRef.value.getContent()
-  fullContent(content)
+  const result =  await getipToAddress()
+  const address = (<AnyObject>result.data).province
+  // uni.showLoading({
+  //   title: '发布中...'
+  // })
+  // db.collection('opendb-news-articles').add({
+  //   title: formData.title,
+  //   content,
+  //   publish_address: address
+  // }).then(res => {
+  //   console.log(res)
+  // }).finally(() => {
+  //   uni.hideLoading()
+  // })
+  // console.log('文本', editRef.value.getText()) 可以通过该方法获取摘要
+  // console.log('图片urls', editRef.value)
 }
 const editRef = ref()
 onMounted(() => {
@@ -97,11 +116,41 @@ onMounted(() => {
     return new Promise((resolve, reject) => {
       uni
         .chooseImage()
-        .then((res) => {
-          resolve(res.tempFilePaths)
+        .then(async (res) => {
+          uni.showLoading({
+            title: '加载中...',
+          })
+          if (Array.isArray(res.tempFilePaths)) {
+            let promiseResult = []
+            for (let i = 0; i < res.tempFilePaths.length; i++) {
+              const temUrl = res.tempFilePaths[i]
+              const result = await uniCloud.uploadFile({
+                filePath: temUrl,
+                cloudPath: `文章图片-${Date.now()}-${getFileExt(temUrl)}`,
+              })
+              promiseResult.push(result)
+            }
+            Promise.all(promiseResult).then((res) => {
+              resolve(res.map((item) => item.fileID))
+            })
+          } else if (typeof res.tempFilePaths === 'string') {
+            uniCloud
+              .uploadFile({
+                filePath: res.tempFilePaths,
+                cloudPath: `文章图片-${Date.now()}-${getFileExt(
+                  res.tempFilePaths
+                )}`,
+              })
+              .then((res) => {
+                resolve(res.fileID)
+              })
+          }
         })
         .catch((err) => {
           reject(err)
+        })
+        .finally(() => {
+          uni.hideLoading()
         })
     })
   }
@@ -127,33 +176,6 @@ const handleRedoClick = () => {
 const handleClearClick = () => {
   editRef.value.clear()
 }
-// 工具函数：匹配所有的图片src，上传并做替换
-const fullContent = async (text: string) => {
-  const imgReg = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi
-  let result: any
-  result = await replaceImgUrl(text, imgReg)
-  console.log('result', result)
-  return ''
-}
-
-const replaceImgUrl = async (text: string, reg: string | RegExp) => {
-  return text.replace(reg, (match, p1) => {
-    uniCloud
-      .uploadFile({
-        filePath: p1.trim(),
-        cloudPath: `文章图片-${Date.now()}${getFileExt(p1)}`,
-      }).then(res => {
-        console.log(res)
-        return res
-      }).catch(err => {
-        console.log(err)
-        return ''
-      })
-    return ''
-  })
-}
-
-// http://tmp/kJkEnGTjaS8i5ccf338d0a1b6bc77349a55691dac3a6.png
 </script>
 
 <style lang="scss" scoped>
@@ -184,8 +206,9 @@ const replaceImgUrl = async (text: string, reg: string | RegExp) => {
   }
   .edit-view {
     height: calc(100vh - 300rpx);
-    margin-top: 36rpx;
+    margin-top: 18rpx;
     padding: 8rpx;
+    border: 3rpx solid #ddd;
   }
 }
 </style>
