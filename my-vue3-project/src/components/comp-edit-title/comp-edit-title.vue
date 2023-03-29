@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed, ref } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 const emits = defineEmits(['titleChange'])
 defineProps<{
   title: string
