@@ -29,6 +29,13 @@
       "label": "标题",
       "trim": "both"
     },
+    "abstract": {
+      "bsonType": "string",
+      "title": "文章摘要",
+      "description": "文章摘要",
+      "label": "文章摘要",
+      "trim": "both"
+    },
     "content": {
       "bsonType": "string",
       "title": "文章内容",
@@ -82,12 +89,11 @@
       "description": "最后回复用户 id，参考`uni-id-users` 表",
       "foreignKey": "uni-id-users._id"
     },
-    "avatar": {
-      "bsonType": "string",
-      "title": "封面大图",
+    "cover": {
+      "bsonType": "array",
+      "title": "封面图",
       "description": "缩略图地址",
-      "label": "封面大图",
-      "trim": "both"
+      "label": "封面图"
     },
     "publish_date": {
       "bsonType": "timestamp",
