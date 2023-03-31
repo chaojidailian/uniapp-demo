@@ -65,6 +65,7 @@
       "description": "阅读数量",
       "defaultValue": 0,
       "permission": {
+        "read": true,
         "write": false
       }
     },
@@ -73,6 +74,7 @@
       "description": "喜欢数、点赞数",
       "defaultValue": 0,
       "permission": {
+        "read": true,
         "write": false
       }
     },
@@ -81,6 +83,7 @@
       "description": "评论数量",
       "defaultValue": 0,
       "permission": {
+        "read": true,
         "write": false
       }
     },

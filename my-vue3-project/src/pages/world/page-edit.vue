@@ -10,11 +10,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
+// title相关
 const title = ref('')
 const handleTitleChange = (newTitle: string) => {
   console.log(newTitle)
   title.value = newTitle
 }
+
+// 获取edit实例，并传递
 const compEditRef = ref()
 
 </script>

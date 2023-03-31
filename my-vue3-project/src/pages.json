@@ -46,6 +46,12 @@
       }
     },
     {
+      "path": "pages/world/page-article-detail",
+      "style": {
+        "navigationBarTitleText": "文章详情"
+      }
+    },
+    {
       "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
       "style": {
         "navigationBarTitleText": "注销账号"
@@ -72,13 +78,13 @@
     {
       "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
       "style": {
-        "navigationBarTitleText": ""
+        "navigationBarTitleText": "登录"
       }
     },
     {
       "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
       "style": {
-        "navigationBarTitleText": ""
+        "navigationBarTitleText": "登录"
       }
     },
     {
@@ -149,7 +155,7 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "默认名称",
+    "navigationBarTitleText": "小程序",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

@@ -7,132 +7,10 @@
       scroll
       @change="handleTabsChange"
     ></fui-tabs>
-    <view class="article">
-      <view class="article-info">
-        <view class="info-left">
-          <fui-avatar
-            src="/static/image/tabBar-personal.png"
-            errorSrc="/static/image/tabBar-personal.png"
-            size="small"
-            shape="circle"
-          ></fui-avatar>
-          <text>用户名称</text>
-          <uni-dateformat
-            date="2023/03/20 20:20:20"
-            :threshold="[60000, 3600000 * 24 * 30]"
-          ></uni-dateformat>
-        </view>
-        <view class="info-right">
-          <fui-icon name="more-fill" :size="60"></fui-icon>
-        </view>
-      </view>
-      <view class="article-content">
-        <h2>默认标题</h2>
-        <text
-          >这是一段文本的文本呢北往南本文岗位反对撒飞洒发顺丰幅度萨芬撒地方
-          给商店啊的说法都是发商店发商店发生发发士大夫精神的发生发第三方
-          昂发都是啊发撒发撒ff范德萨范德萨分富士达范德萨分</text
-        >
-      </view>
-      <view class="article-imgs">
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-      </view>
-      <view class="article-options">
-        <fui-icon name="fabulous" :size="60"></fui-icon>
-        <fui-icon name="comment" :size="60"></fui-icon>
-        <fui-icon name="share" :size="60"></fui-icon>
-      </view>
-    </view>
-    <view class="article">
-      <view class="article-info">
-        <view class="info-left">
-          <fui-avatar
-            src="/static/image/tabBar-personal.png"
-            errorSrc="/static/image/tabBar-personal.png"
-            size="small"
-            shape="circle"
-          ></fui-avatar>
-          <text>用户名称</text>
-          <uni-dateformat
-            date="2023/03/20 20:20:20"
-            :threshold="[60000, 3600000 * 24 * 30]"
-          ></uni-dateformat>
-        </view>
-        <view class="info-right">
-          <fui-icon name="more-fill" :size="60"></fui-icon>
-        </view>
-      </view>
-      <view class="article-content">
-        <text
-          >这是一段文本文本呢北往南本文岗位反对撒飞洒发顺丰幅度萨芬撒地方
-          给商店啊的说法都是发商店发商店发生发发士大夫精神的发生发第三方
-          昂发都是啊发撒发撒ff范德萨范德萨分富士达范德萨分</text
-        >
-      </view>
-      <view class="article-imgs">
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-        <image
-          src="/static/image/tabBar-personal.png"
-          mode="aspectFill"
-        ></image>
-      </view>
-      <view class="article-options">
-        <fui-icon name="fabulous" :size="60"></fui-icon>
-        <fui-icon name="comment" :size="60"></fui-icon>
-        <fui-icon name="share" :size="60"></fui-icon>
-      </view>
-    </view>
-    <view class="article-edit" ref="editRef">
+    <template v-for="article in articles" :key="article._id">
+      <comp-article :article="article"></comp-article>
+    </template>
+    <view class="article-edit">
       <view class="edit" @click="handleEditClick">
         <fui-icon name="edit" :size="80"></fui-icon>
       </view>
@@ -141,19 +19,37 @@
 </template>
 
 <script lang="ts" setup>
+import { onLoad } from '@dcloudio/uni-app'
 import { ref } from 'vue'
+
 const current = ref(0)
 const list = ['推荐', '热门']
 const handleTabsChange = (e: any) => {
   current.value = e.index
   console.log(e, current.value)
 }
-const editRef = ref()
+
 const handleEditClick = () => {
   uni.navigateTo({
     url: '/pages/world/page-edit',
   })
 }
+const db = uniCloud.database()
+const articles = ref<any[]>([])
+onLoad(async () => {
+  const artTab = db
+    .collection('opendb-news-articles')
+    .field(
+      '_id,user_id,view_count,like_count,comment_count,last_modify_date,title,abstract,cover,publish_address'
+    )
+    .getTemp()
+  const userTab = db
+    .collection('uni-id-users')
+    .field('_id,username,nickname,avatar_file')
+    .getTemp()
+  const res = await db.collection(artTab, userTab).get()
+  articles.value = res.result.data
+})
 </script>
 
 <style lang="scss" scoped>
