@@ -30,29 +30,21 @@ const handleTabsChange = (e: any) => {
   console.log(e, current.value)
 }
 
-//点击编辑图标事件
+// 点击编辑图标事件
 const handleEditClick = () => {
   uni.navigateTo({
     url: '/pages/world/page-edit',
   })
 }
 
-//开始加载
+// 开始加载所有文章内容
+const articlesObj = uniCloud.importObject('articles-obj')
 const db = uniCloud.database()
 const articles = ref<any[]>([])
 onLoad(async () => {
-  const artTab = db
-    .collection('opendb-news-articles')
-    .field(
-      '_id,user_id,view_count,like_count,comment_count,last_modify_date,title,abstract,cover,publish_address'
-    )
-    .getTemp()
-  const userTab = db
-    .collection('uni-id-users')
-    .field('_id,username,nickname,avatar_file')
-    .getTemp()
-  const res = await db.collection(artTab, userTab).get()
-  articles.value = res.result.data
+  const res = await articlesObj.getAllArticles()
+  console.log(res)
+  articles.value = res.data
 })
 </script>
 

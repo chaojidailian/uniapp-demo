@@ -30,7 +30,7 @@ const handleAddArticleClick = async () => {
   uni.showLoading({
     title: '发布中...'
   })
-  db.collection('opendb-news-articles').add({
+  db.collection('articles').add({
     title,
     abstract,
     cover,

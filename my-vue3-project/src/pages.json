@@ -28,7 +28,7 @@
       }
     },
     {
-      "path": "pages/personal-center/demo",
+      "path": "pages/personal-center/upload-demo",
       "style": {
         "navigationBarTitleText": "手动上传文件"
       }
