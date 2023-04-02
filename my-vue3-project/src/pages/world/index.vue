@@ -22,6 +22,7 @@
 import { onLoad } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 
+// 标签发生变化事件
 const current = ref(0)
 const list = ['推荐', '热门']
 const handleTabsChange = (e: any) => {
@@ -29,11 +30,14 @@ const handleTabsChange = (e: any) => {
   console.log(e, current.value)
 }
 
+//点击编辑图标事件
 const handleEditClick = () => {
   uni.navigateTo({
     url: '/pages/world/page-edit',
   })
 }
+
+//开始加载
 const db = uniCloud.database()
 const articles = ref<any[]>([])
 onLoad(async () => {
